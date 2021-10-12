@@ -11,6 +11,7 @@ const API_KEY = '23694047-a2e6262ac35d899e9f10bdeb1';
 const PER_PAGE = 40;
 let page = 1;
 let totalHits = 0;
+let firstAlter = 0;
 
 const serchText = () => qs("[type='text']").value;
 const serchedImgs = () => getPixabayPhotos(serchText);
@@ -56,8 +57,9 @@ function photosParams(machPhotos) {
         Notiflix.Notify.info("We're sorry, but you've reached the end of search results.");
       }
 
-      if (page === 1 && photosHits.length !== 0) {
+      if (firstAlter === 0 && photosHits.length !== 0) {
         Notiflix.Notify.success(`Hooray! We found ${totalHits} images.`);
+        firstAlter++;
       }
 
       return photosHits;
@@ -162,4 +164,5 @@ btn.addEventListener('click', event => {
   displayPhotos(photos);
   // btnLoadMore.classList.add('hiden');
   page = 1;
+  firstAlter = 0;
 });
