@@ -128,11 +128,15 @@ function clearGallery() {
 
 const addPage = () => {
   const { scrollTop, scrollHeight, clientHeight } = document.documentElement;
-  const ifEndScroll = () => scrollTop + clientHeight >= scrollHeight;
+  const ifEndScroll = () => Math.ceil(scrollTop + clientHeight) >= scrollHeight;
 
+  l(
+    `ifEndScroll:  scrollTop:${scrollTop} clientHeight:${clientHeight}  scrollHeight:${scrollHeight}`,
+  );
   if (ifEndScroll()) {
     const { height: cardHeight } = qs('.gallery').firstElementChild.getBoundingClientRect();
-
+    l(" ");
+    
     let photos = photosParams(serchedImgs);
 
     if (!ifNoHits()) {
