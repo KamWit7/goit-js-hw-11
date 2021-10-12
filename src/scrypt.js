@@ -38,9 +38,7 @@ function photosParams(machPhotos) {
     .then(photos => {
       let photosHits = [];
       if (page === 1) setTotalHits(photos);
-
-      // l('totalHits:' + totalHits);
-      l(photos);
+      // l(photos);
 
       photos.hits.forEach(photo => {
         const { webformatURL, largeImageURL, tags, likes, views, comments, downloads } = photo;
@@ -69,7 +67,6 @@ function photosParams(machPhotos) {
 function displayPhotos(photos) {
   return photos
     .then(photos => {
-      // l(photos);
       const gallery = qs('.gallery');
 
       photos.forEach(photo => {
